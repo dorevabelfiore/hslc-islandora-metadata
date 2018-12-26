@@ -1,0 +1,3 @@
+mods-processes/in/*.xml
+mods-processes/out/*.xml
+mods-processes/_tmp.*
