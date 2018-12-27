@@ -105,6 +105,12 @@
             <roleTerm type="text">Provider</roleTerm>
         </role>
     </name>
+    <name type="corporate" displayLabel="Division">
+        <namePart><?cdm-element-name division?></namePart>
+    </name>
+    <name type="corporate" displayLabel="Department">
+        <namePart><?cdm-element-name department?></namePart>
+    </name>
     
     <originInfo>
         <publisher><?cdm-element-name publisher?></publisher>
@@ -112,7 +118,7 @@
         <dateCaptured><?cdm-element-name date_digitized?></dateCaptured>
     </originInfo>
     
-    <identifier><?cdm-element-name identifier?></identifier>
+    <identifier type="local"><?cdm-element-name identifier?></identifier>
     
     <physicalDescription>
         <extent><?cdm-element-name run_time?></extent>
@@ -131,6 +137,8 @@
     <targetAudience><?cdm-element-name audience?></targetAudience>
     
     <accessCondition type="use and reproduction"><?cdm-element-name rights?></accessCondition>
+    <accessCondition type="contact"><?cdm-element-name contact?></accessCondition>
+    
     
     
     <!-- DO NOT REMOVE ANY OF THE FOLLOWING CONTENT -->
