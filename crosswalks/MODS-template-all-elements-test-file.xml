@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="hslc-mods2qdc.xsl"?>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-7.xsd"
+    version="3.7">
+    <titleInfo>
+        <title>Title</title>
+    </titleInfo>
+    <titleInfo type="alternative">
+        <title>Title</title>
+    </titleInfo>
+    <titleInfo otherType="masthead">
+        <title>Masthead</title>
+    </titleInfo>
+
+    <relatedItem otherType="Replaces" otherTypeAuthURI="http://dublincore.org/documents/2000/07/11/dcmes-qualifiers/">
+        <titleInfo>
+            <title>Replaces</title>
+        </titleInfo>
+    </relatedItem>
+    <relatedItem otherType="Is Replaced By" otherTypeAuthURI="http://dublincore.org/documents/2000/07/11/dcmes-qualifiers/">
+        <titleInfo>
+            <title>Replaced By</title>
+        </titleInfo>
+    </relatedItem>
+    <relatedItem type="otherFormat">
+        <location>
+            <url>Streaming Identifier</url>
+        </location>
+    </relatedItem>
+    <relatedItem type="host">
+        <titleInfo>
+            <title>Source</title>
+        </titleInfo>
+    </relatedItem>
+    <relatedItem>
+        <titleInfo>
+            <title>Relation</title>
+        </titleInfo>
+    </relatedItem>
+
+    <language>
+        <languageTerm type="text">Language</languageTerm>
+    </language>
+
+    <part>
+        <detail type="volume">
+            <number>Volume</number>
+        </detail>
+        <detail type="issue">
+            <number>Issue</number>
+        </detail>
+        <detail type="number">
+            <number>Number</number>
+        </detail>
+    </part>
+
+    <subject>
+        <topic>Subject</topic>
+    </subject>
+    <subject>
+        <geographic>Location Covered</geographic>
+    </subject>
+    <subject>
+        <temporal>Time Period Covered</temporal>
+    </subject>
+
+    <abstract>Description</abstract>
+
+    <typeOfResource>Type</typeOfResource>
+
+    <name type="personal">
+        <namePart>Creator</namePart>
+        <role>
+            <roleTerm type="text">Creator</roleTerm>
+        </role>
+    </name>
+    <name type="personal">
+        <namePart>Contributor</namePart>
+        <role>
+            <roleTerm type="text">Contributor</roleTerm>
+        </role>
+    </name>
+    <name type="personal">
+        <namePart>Interviewer</namePart>
+        <role>
+            <roleTerm type="text">Interviewer</roleTerm>
+        </role>
+    </name>
+    <name type="personal">
+        <namePart>Interviewee</namePart>
+        <role>
+            <roleTerm type="text">Interviewee</roleTerm>
+        </role>
+    </name>
+    <name type="personal">
+        <namePart>Contact</namePart>
+        <role>
+            <roleTerm type="text">Curator</roleTerm>
+        </role>
+    </name>
+    <name type="corporate">
+        <namePart>Contributing Institution</namePart>
+        <role>
+            <roleTerm type="text">Provider</roleTerm>
+        </role>
+    </name>
+    <name type="corporate" displayLabel="Division">
+        <namePart>Division</namePart>
+    </name>
+    <name type="corporate" displayLabel="Department">
+        <namePart>Department</namePart>
+    </name>
+    
+    <originInfo>
+        <publisher>Publisher</publisher>
+        <dateIssued>1999-12-31</dateIssued>
+        <dateCaptured>2002-12-05</dateCaptured>
+    </originInfo>
+
+    <identifier type="local">Identifier</identifier>
+
+    <physicalDescription>
+        <extent>Run time</extent>
+        <form>Original Format</form>
+        <internetMediaType>Digital Format</internetMediaType>
+        <note type="digital specifications">Digital Specifications</note>
+    </physicalDescription>
+
+    <note type="recording location">Location Recorded</note>
+    <note type="provenance">Provenance</note>
+    <note type="sponsorship">Sponsorship</note>
+    <note>Notes</note>
+    <note type="internal">Internal Notes</note>
+    <note type="embargo">Embargo Note</note>
+
+    <targetAudience>Audience</targetAudience>
+
+    <accessCondition type="use and reproduction">Rights</accessCondition>
+    <accessCondition type="contact">Contact</accessCondition>
+</mods>

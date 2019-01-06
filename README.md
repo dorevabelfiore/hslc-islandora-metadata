@@ -2,6 +2,7 @@
 This repository contains:
 - `/mods-mappings`: MODS maps used to process ContentDM XML exports using the Islandora XML Based ContentDM Migration modules
 - `/mods-processes`: XSL transformations used to perform intermediate processes to affect interventions on the MODS XML produced by the module, prior to batch ingest.
+- `crosswalks`: XSL transformations providing crosswalks from MODS to other target formats such as Qualified Dublin Core
 
 ## MODS Processes
 | File | Description |
