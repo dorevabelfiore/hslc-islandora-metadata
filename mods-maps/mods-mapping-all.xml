@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mods xmlns="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-7.xsd"
+    version="3.7">
+    <titleInfo>
+        <title><?cdm-element-name title?></title>
+    </titleInfo>
+    <titleInfo type="alternative">
+        <title><?cdm-element-name alternate_title?></title>
+    </titleInfo>
+    <titleInfo otherType="masthead">
+        <title><?cdm-element-name masthead?></title>
+    </titleInfo>
+    
+    <relatedItem otherType="Replaces" otherTypeAuthURI="http://dublincore.org/documents/2000/07/11/dcmes-qualifiers/">
+        <titleInfo>
+            <title><?cdm-element-name replaces?></title>
+        </titleInfo>
+    </relatedItem>
+    <relatedItem otherType="Is Replaced By" otherTypeAuthURI="http://dublincore.org/documents/2000/07/11/dcmes-qualifiers/">
+        <titleInfo>
+            <title><?cdm-element-name replaced_by?></title>
+        </titleInfo>
+    </relatedItem>
+    <relatedItem type="otherFormat">
+        <location>
+            <url><?cdm-element-name streaming_identifier?></url>
+        </location>
+    </relatedItem>
+    <relatedItem type="host">
+        <titleInfo>
+            <title><?cdm-element-name source?></title>
+        </titleInfo>
+    </relatedItem>
+    <relatedItem>
+        <titleInfo>
+            <title><?cdm-element-name relation?></title>
+        </titleInfo>
+    </relatedItem>
+    
+    <language>
+        <languageTerm type="text"><?cdm-element-name language?></languageTerm>
+    </language>
+    
+    <part>
+        <detail type="volume">
+            <number><?cdm-element-name volume?></number>
+        </detail>
+        <detail type="issue">
+            <number><?cdm-element-name issue?></number>
+        </detail>
+        <detail type="number">
+            <number><?cdm-element-name number?></number>
+        </detail>
+    </part>
+    
+    <subject>
+        <topic><?cdm-element-name subject?></topic>
+    </subject>
+    <subject>
+        <geographic><?cdm-element-name location_covered?></geographic>
+    </subject>
+    <subject>
+        <temporal><?cdm-element-name time_period_covered?></temporal>
+    </subject>
+    
+    <abstract><?cdm-element-name description?></abstract>
+    
+    <typeOfResource><?cdm-element-name type?></typeOfResource>
+    
+    <name type="personal">
+        <namePart><?cdm-element-name creator?></namePart>
+        <role>
+            <roleTerm type="text">Creator</roleTerm>
+        </role>
+    </name>
+    <name type="personal">
+        <namePart><?cdm-element-name contributor?></namePart>
+        <role>
+            <roleTerm type="text">Contributor</roleTerm>
+        </role>
+    </name>
+    <name type="personal">
+        <namePart><?cdm-element-name interviewer?></namePart>
+        <role>
+            <roleTerm type="text">Interviewer</roleTerm>
+        </role>
+    </name>
+    <name type="personal">
+        <namePart><?cdm-element-name interviewee?></namePart>
+        <role>
+            <roleTerm type="text">Interviewee</roleTerm>
+        </role>
+    </name>
+    <name type="personal">
+        <namePart><?cdm-element-name contact?></namePart>
+        <role>
+            <roleTerm type="text">Curator</roleTerm>
+        </role>
+    </name>
+    <name type="corporate">
+        <namePart><?cdm-element-name contributing_institution?></namePart>
+        <role>
+            <roleTerm type="text">Provider</roleTerm>
+        </role>
+    </name>
+    <name type="corporate" displayLabel="Division">
+        <namePart><?cdm-element-name division?></namePart>
+    </name>
+    <name type="corporate" displayLabel="Department">
+        <namePart><?cdm-element-name department?></namePart>
+    </name>
+    
+    <originInfo>
+        <publisher><?cdm-element-name publisher?></publisher>
+        <dateIssued><?cdm-element-name date?></dateIssued>
+        <dateCaptured><?cdm-element-name date_digitized?></dateCaptured>
+    </originInfo>
+    
+    <identifier type="local"><?cdm-element-name identifier?></identifier>
+    
+    <physicalDescription>
+        <extent><?cdm-element-name run_time?></extent>
+        <form><?cdm-element-name original_format?></form>
+        <internetMediaType><?cdm-element-name digital_format?></internetMediaType>
+        <note type="digital specifications"><?cdm-element-name digital_specifications?></note>
+    </physicalDescription>
+    
+    <note type="recording location"><?cdm-element-name location_recorded?></note>
+    <note type="provenance"><?cdm-element-name provenance?></note>
+    <note type="sponsorship"><?cdm-element-name sponsorship?></note>
+    <note><?cdm-element-name notes?></note>
+    <note type="internal"><?cdm-element-name internal_notes?></note>
+    <note type="embargo"><?cdm-element-name embargo_note?></note>
+    
+    <targetAudience><?cdm-element-name audience?></targetAudience>
+    
+    <accessCondition type="use and reproduction"><?cdm-element-name rights?></accessCondition>
+    <accessCondition type="contact"><?cdm-element-name contact?></accessCondition>
+    
+    
+    
+    <!-- DO NOT REMOVE ANY OF THE FOLLOWING CONTENT -->
+    
+    <!-- This will map the file extension to a content model -->
+    <relatedItem otherType="islandoraCModel" otherTypeAuth="dgi">
+        <identifier><?cdm-element-name contentdm-fileName?></identifier>
+    </relatedItem>
+    
+    <!-- assign collection -->
+    <relatedItem otherType="islandoraCollection" otherTypeAuth="dgi"/>
+    
+    <!-- assign parent/child relationships -->
+    <relatedItem otherType="isChildOf" otherTypeAuth="dgi"/>
+    
+    <!-- This will embed a link the ingest process can follow to retrieve the digital object to place
+         in the OBJ datastream. This PI must be mapped to the element that has the ContentDM item url. -->
+    <relatedItem otherType="OBJ" otherTypeAuth="dgi">
+        <?cdm-element-name item-url?>
+    </relatedItem>
+    
+    
+    <!-- This will temporarily embed the original ContentDM data. It is retrieved by the ingest process and stored
+         in a CDM datastream. -->
+    <relatedItem otherType="CDMDatastream" otherTypeAuth="dgi">
+        <extension><?cdm-element-name record?></extension>
+    </relatedItem>
+    
+    <!-- This will temporarily embed the full text data. It is retrieved by the ingest process and stored
+         in a FULLTEXT datastream. -->
+    <relatedItem otherType="FULLTEXTDatastream" otherTypeAuth="dgi">
+        <extension>
+            <FULLTEXT><?cdm-element-name full-text?></FULLTEXT>
+        </extension>
+    </relatedItem>
+    
+    
+    
+</mods>
