@@ -44,7 +44,7 @@
             | mods:relatedItem[@otherType = 'FULLTEXTDatastream'][normalize-space(mods:extension) = '']
             | mods:titleInfo[@type = 'alternative'][not(mods:title[normalize-space()])]
             | mods:titleInfo[@otherType = 'masthead'][not(mods:title[normalize-space()])]
-            | mods:relatedItem[@otherType][not(mods:titleInfo/mods:title[normalize-space()])]
+            | mods:relatedItem[not(matches(@otherType,'(islandoraCModel|islandoraCollection|isChildOf|OBJ|CDMDatastream|FULLTEXTDatastream)'))][not(mods:titleInfo/mods:title[normalize-space()])]
             | mods:part[not(descendant::*[normalize-space()])]
             | mods:name[mods:role/mods:roleTerm[matches(.,'Interview')]][not(mods:namePart[normalize-space()])]
             | mods:note[not(normalize-space())]
