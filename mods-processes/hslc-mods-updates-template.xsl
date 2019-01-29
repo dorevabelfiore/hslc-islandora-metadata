@@ -30,7 +30,42 @@
             <xsl:copy-of select="."/>
         </xsl:template>
         
-        <!-- updates TK -->
+        <!-- updates -->
+        
+        <!--  
+             whether ';' present or not, tokenizing on it will work correctly
+             
+             Assumption: (since coming from ContentDM: only one namePart in /mods/name.
+        -->
+        <xsl:template match="mods:mods/mods:name[mods:namePart[normalize-space()]]" exclude-result-prefixes="#all">
+            <xsl:variable name="name-attributes" select="@*"/>
+            <!-- store sibling elements, e.g. role -->
+            <xsl:variable name="namepart-siblings" select="*[not(self::mods:namePart)]"/>
+            <xsl:for-each select="mods:namePart">
+                <xsl:for-each select="tokenize(.,';')">
+                    <name xmlns="http://www.loc.gov/mods/v3">
+                        <xsl:copy-of select="$name-attributes"/>
+                        <namePart><xsl:value-of select="normalize-space(.)"/></namePart>
+                        <!-- each name should include the namepart siblings -->
+                        <xsl:apply-templates select="$namepart-siblings"/>
+                    </name>
+                </xsl:for-each>
+            </xsl:for-each>
+        </xsl:template>
+        
+        <!-- split multivalue /subject/(geographic|topic|temporal) on ';' -->
+        <xsl:template match="mods:subject[count(*) = 1][(mods:geographic|mods:temporal|mods:topic)[contains(.,';')]]" exclude-result-prefixes="#all">
+            <xsl:variable name="subject-attributes" select="@*"/>
+            <xsl:variable name="subject-child-name" select="local-name(child::*)"/>
+            <xsl:for-each select="*">
+                <xsl:for-each select="tokenize(.,';')">
+                    <subject xmlns="http://www.loc.gov/mods/v3">
+                        <xsl:copy-of select="$subject-attributes"/>
+                        <xsl:element name="{$subject-child-name}"><xsl:value-of select="normalize-space(.)"/></xsl:element>
+                    </subject>
+                </xsl:for-each>
+            </xsl:for-each>
+        </xsl:template>  
         
         <!-- remove selected empty elements -->
         <xsl:template match="mods:name[not(mods:namePart[normalize-space()])]

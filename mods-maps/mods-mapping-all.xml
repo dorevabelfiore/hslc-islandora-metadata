@@ -93,12 +93,6 @@
             <roleTerm type="text">Interviewee</roleTerm>
         </role>
     </name>
-    <name type="personal">
-        <namePart><?cdm-element-name contact?></namePart>
-        <role>
-            <roleTerm type="text">Curator</roleTerm>
-        </role>
-    </name>
     <name type="corporate">
         <namePart><?cdm-element-name contributing_institution?></namePart>
         <role>
