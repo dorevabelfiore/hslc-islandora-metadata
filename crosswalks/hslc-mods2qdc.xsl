@@ -41,13 +41,13 @@
 
         <xsl:template match="mods:subject">
             <xsl:for-each select="mods:topic">
-                <dcterms:subject><xsl:value-of select="mods:topic"/></dcterms:subject>
+                <dcterms:subject><xsl:value-of select="."/></dcterms:subject>
             </xsl:for-each>
             <xsl:for-each select="mods:geographic">
-                <dcterms:spatial><xsl:value-of select="mods:geographic"/></dcterms:spatial>
+                <dcterms:spatial><xsl:value-of select="."/></dcterms:spatial>
             </xsl:for-each>
             <xsl:for-each select="mods:temporal">
-                <dcterms:temporal><xsl:value-of select="mods:temporal"/></dcterms:temporal>
+                <dcterms:temporal><xsl:value-of select="."/></dcterms:temporal>
             </xsl:for-each>
         </xsl:template>     
 
