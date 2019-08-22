@@ -70,8 +70,8 @@
     <xsl:template match="mods:mods/mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier[. = 'islandora:collectionCModel']" exclude-result-prefixes="#all">
         <xsl:variable name="identifier" select="ancestor::mods:mods/mods:identifier[@type = 'islandora']"/>
         <xsl:choose>
-            <!-- when this collection only has image children make it a book -->
-            <xsl:when test="$tree//node[@id = $identifier][not(descendant::node[@cmodel = 'islandora:collectionCModel']) and not(node[not(matches(@cmodel,'image'))])]">
+            <!-- when this collection only has large image children make it a book -->
+            <xsl:when test="$tree//node[@id = $identifier][not(descendant::node[@cmodel = 'islandora:collectionCModel']) and not(node[not(matches(@cmodel,'large_image'))])]">
                 <identifier xmlns="http://www.loc.gov/mods/v3">islandora:bookCModel</identifier>
             </xsl:when>
             <!--  or let it be -->
@@ -83,8 +83,8 @@
     <xsl:template match="mods:mods/mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier[. = 'islandora:compoundCModel']" exclude-result-prefixes="#all">
         <xsl:variable name="identifier" select="ancestor::mods:mods/mods:identifier[@type = 'islandora']"/>
         <xsl:choose>
-            <!-- when this compound only has image children make it a book -->
-            <xsl:when test="$tree//node[@id = $identifier][not(node[not(matches(@cmodel,'image'))])]">
+            <!-- when this compound only has large image children make it a book -->
+            <xsl:when test="$tree//node[@id = $identifier][not(node[not(matches(@cmodel,'large_image'))])]">
                 <identifier xmlns="http://www.loc.gov/mods/v3">islandora:bookCModel</identifier>
             </xsl:when>
             <!--  or let it be -->
@@ -99,11 +99,11 @@
          In this case removal of the collection association and creating the isPageOf relationship can be 
          handled in one template. Two subsequent templates handle image records that are the child of a compound.
     -->
-    <xsl:template match="mods:mods[not(mods:relatedItem[@otherType = 'isChildOf'])][matches(mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier,'image')]/mods:relatedItem[@otherType = 'islandoraCollection']" exclude-result-prefixes="#all">
+    <xsl:template match="mods:mods[not(mods:relatedItem[@otherType = 'isChildOf'])][matches(mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier,'large_image')]/mods:relatedItem[@otherType = 'islandoraCollection']" exclude-result-prefixes="#all">
         <xsl:variable name="identifier" select="parent::mods:mods/mods:identifier[@type = 'islandora']"/>
         <xsl:variable name="book-identifier" select="normalize-space(mods:identifier)"/>
         <xsl:choose>
-            <xsl:when test="$tree//node[@id = $identifier][not(parent::node/node[@cmodel = 'islandora:collectionCModel'])][not(parent::node/node[not(matches(@cmodel,'image'))])]">
+            <xsl:when test="$tree//node[@id = $identifier][not(parent::node/node[@cmodel = 'islandora:collectionCModel'])][not(parent::node/node[not(matches(@cmodel,'large_image'))])]">
                 <relatedItem xmlns="http://www.loc.gov/mods/v3" otherType="isPageOf" otherTypeAuth="dgi">
                     <identifier>
                         <xsl:call-template name="book-identifier">
@@ -122,11 +122,11 @@
          from isChildOf to isPageOf, otherwise it is copied through.
          A subsequent template handles removal of the collection relationship if a record is changed to a
          book page.
-    -->    <xsl:template match="mods:mods[mods:relatedItem[@otherType = 'isChildOf']][matches(mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier,'image')]/mods:relatedItem[@otherType = 'isChildOf']" exclude-result-prefixes="#all">
+    -->    <xsl:template match="mods:mods[mods:relatedItem[@otherType = 'isChildOf']][matches(mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier,'large_image')]/mods:relatedItem[@otherType = 'isChildOf']" exclude-result-prefixes="#all">
         <xsl:variable name="identifier" select="parent::mods:mods/mods:identifier[@type = 'islandora']"/>
         <xsl:variable name="book-identifier" select="normalize-space(mods:identifier)"/>
         <xsl:choose>
-            <xsl:when test="$tree//node[@id = $identifier][not(parent::node/node[@cmodel = 'islandora:collectionCModel'])][not(parent::node/node[not(matches(@cmodel,'image'))])]">
+            <xsl:when test="$tree//node[@id = $identifier][not(parent::node/node[@cmodel = 'islandora:collectionCModel'])][not(parent::node/node[not(matches(@cmodel,'large_image'))])]">
                 <relatedItem xmlns="http://www.loc.gov/mods/v3" otherType="isPageOf" otherTypeAuth="dgi">
                     <identifier>
                         <xsl:call-template name="book-identifier">
@@ -142,11 +142,11 @@
     <!-- See preceding template. This template, which also addresses compound children, tests: 
         If the record has no non-image siblings and is to become a book page, the relationship
         to a collection is removed, otherwise it is copied through.  -->
-    <xsl:template match="mods:mods[mods:relatedItem[@otherType = 'isChildOf']][matches(mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier,'image')]/mods:relatedItem[@otherType = 'islandoraCollection']" exclude-result-prefixes="#all">
+    <xsl:template match="mods:mods[mods:relatedItem[@otherType = 'isChildOf']][matches(mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier,'large_image')]/mods:relatedItem[@otherType = 'islandoraCollection']" exclude-result-prefixes="#all">
         <xsl:variable name="identifier" select="parent::mods:mods/mods:identifier[@type = 'islandora']"/>
         <xsl:variable name="book-identifier" select="normalize-space(mods:identifier)"/>
         <xsl:choose>
-            <xsl:when test="$tree//node[@id = $identifier][not(parent::node/node[@cmodel = 'islandora:collectionCModel'])][not(parent::node/node[not(matches(@cmodel,'image'))])]"/>
+            <xsl:when test="$tree//node[@id = $identifier][not(parent::node/node[@cmodel = 'islandora:collectionCModel'])][not(parent::node/node[not(matches(@cmodel,'large_image'))])]"/>
             <xsl:otherwise><xsl:copy-of select="."/></xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -163,16 +163,16 @@
         </xsl:choose>
     </xsl:template>
 
-    <!-- have to change cModel for the image objects that will become pages 
+    <!-- have to change cModel for the large image objects that will become pages 
          this works for both compounds and collections
     -->
-    <xsl:template match="mods:mods/mods:relatedItem[@otherType = 'islandoraCModel'][mods:identifier[matches(.,'image')]]" exclude-result-prefixes="#all">
+    <xsl:template match="mods:mods/mods:relatedItem[@otherType = 'islandoraCModel'][mods:identifier[matches(.,'large_image')]]" exclude-result-prefixes="#all">
         <xsl:variable name="identifier" select="parent::mods:mods/mods:identifier[@type = 'islandora']"/>
         <xsl:variable name="book-identifier" select="parent::mods:mods/mods:relatedItem[@otherType = 'islandoraCollection']/mods:identifier"/>
         <xsl:choose>
-            <!-- when: parent is a container, does not have any subcollections, and none of its children are not images, 
+            <!-- when: parent is a container, does not have any subcollections, and none of its children are not large images, 
                  it's a page so replace child relationship with collection to isPageOf -->
-            <xsl:when test="$tree//node[@id = $identifier][not(parent::node/node[@cmodel = 'islandora:collectionCModel'])][not(parent::node/node[not(matches(@cmodel,'image'))])]">
+            <xsl:when test="$tree//node[@id = $identifier][not(parent::node/node[@cmodel = 'islandora:collectionCModel'])][not(parent::node/node[not(matches(@cmodel,'large_image'))])]">
                 <relatedItem xmlns="http://www.loc.gov/mods/v3" otherType="islandoraCModel" otherTypeAuth="dgi">
                     <identifier>islandora:pageCModel</identifier>
                 </relatedItem>
