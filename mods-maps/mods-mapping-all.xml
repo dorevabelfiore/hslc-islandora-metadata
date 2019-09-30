@@ -108,14 +108,20 @@
     
     <originInfo>
         <publisher><?cdm-element-name publisher?></publisher>
+        <place>
+            <placeTerm type="text"><?cdm-element-name place_of_publication?></placeTerm>
+        </place>
         <dateIssued><?cdm-element-name date?></dateIssued>
         <dateCaptured><?cdm-element-name date_digitized?></dateCaptured>
     </originInfo>
+    
+    <tableOfContents><?cdm-element-name table_of_contents?></tableOfContents>
     
     <identifier type="local"><?cdm-element-name identifier?></identifier>
     
     <physicalDescription>
         <extent><?cdm-element-name run_time?></extent>
+        <extent><?cdm-element-name physical_description?></extent>
         <form><?cdm-element-name original_format?></form>
         <internetMediaType><?cdm-element-name digital_format?></internetMediaType>
         <note type="digital specifications"><?cdm-element-name digital_specifications?></note>
