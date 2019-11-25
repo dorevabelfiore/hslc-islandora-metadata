@@ -54,7 +54,7 @@
         </xsl:template>
         
         <!-- split multivalue /subject/(geographic|topic|temporal) on ';' -->
-        <xsl:template match="mods:subject[count(*) = 1][(mods:geographic|mods:temporal|mods:topic)[contains(.,';')]]" exclude-result-prefixes="#all">
+        <xsl:template match="mods:subject[count(*) = 1][(mods:geographic|mods:temporal|mods:topic)[contains(.,';')]][not(count(mods:topic[normalize-space()]) > 1)]" exclude-result-prefixes="#all">
             <xsl:variable name="subject-attributes" select="@*"/>
             <xsl:variable name="subject-child-name" select="local-name(child::*)"/>
             <xsl:for-each select="*">
@@ -65,7 +65,32 @@
                     </subject>
                 </xsl:for-each>
             </xsl:for-each>
-        </xsl:template>  
+        </xsl:template>
+        
+        <!-- additions for Lycoming Womens History -->
+        <!-- /mods/subject[count(topic) > 1] -->
+        <xsl:template match="mods:subject[count(mods:topic[normalize-space()]) > 1][not(mods:*[local-name() != 'topic'])]" exclude-result-prefixes="#all">
+            <xsl:variable name="subject-attributes" select="@*"/>
+            <!-- each topic becomes its own /mods/subject/topic -->
+            <xsl:for-each select="mods:topic">
+                <!-- which needs to be split further if there are delimited values -->
+                <xsl:for-each select="tokenize(.,';')[normalize-space()]">
+                    <subject xmlns="http://www.loc.gov/mods/v3">
+                        <xsl:copy-of select="$subject-attributes"/>
+                        <topic><xsl:value-of select="normalize-space(.)"/></topic>
+                    </subject>
+                </xsl:for-each>
+            </xsl:for-each>
+        </xsl:template>
+        
+        <!-- /mods/relatedItem[not(@type)]/titleInfo[count(mods:title) > 1] -->
+        <xsl:template match="mods:relatedItem[not(@type)][mods:titleInfo[count(mods:title) > 1]]" exclude-result-prefixes="#all">
+            <xsl:for-each select="mods:titleInfo/mods:title">
+                <relatedItem xmlns="http://www.loc.gov/mods/v3">
+                    <titleInfo><xsl:copy-of select="."/></titleInfo>
+                </relatedItem>
+            </xsl:for-each>
+        </xsl:template>
         
         <!-- remove selected empty elements -->
         <xsl:template match="mods:name[not(mods:namePart[normalize-space()])]
