@@ -39,7 +39,7 @@
                      so no recursion is needed to list the children -->
                 <node id="{$node-id}" cmodel="{$cmodel}">
                     <xsl:for-each
-                    select="/mods:modsCollection/mods:mods[mods:relatedItem[@otherType = 'isChildOf']/mods:identifier[. = $node-id]]">
+                    select="/mods:modsCollection/mods:mods[mods:relatedItem[@otherType = 'isChildOf']/mods:identifier[not(@type)][. = $node-id]]">
                         <xsl:variable name="node-id" select="mods:identifier[@type = 'islandora']"/>
                         <xsl:variable name="cmodel" select="mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier"/>
                         <node id="{$node-id}" cmodel="{$cmodel}"/>
@@ -124,7 +124,8 @@
          book page.
     -->    <xsl:template match="mods:mods[mods:relatedItem[@otherType = 'isChildOf']][matches(mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier,'image')]/mods:relatedItem[@otherType = 'isChildOf']" exclude-result-prefixes="#all">
         <xsl:variable name="identifier" select="parent::mods:mods/mods:identifier[@type = 'islandora']"/>
-        <xsl:variable name="book-identifier" select="normalize-space(mods:identifier)"/>
+        <!-- remember the new identifier[@type = 'sequenceNo'] is at this level too now, so use not(@type) -->
+        <xsl:variable name="book-identifier" select="normalize-space(mods:identifier[not(@type)])"/>
         <xsl:choose>
             <xsl:when test="$tree//node[@id = $identifier][not(parent::node/node[@cmodel = 'islandora:collectionCModel'])][not(parent::node/node[not(matches(@cmodel,'image'))])]">
                 <relatedItem xmlns="http://www.loc.gov/mods/v3" otherType="isPageOf" otherTypeAuth="dgi">
