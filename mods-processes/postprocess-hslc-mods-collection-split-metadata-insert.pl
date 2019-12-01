@@ -14,7 +14,7 @@ foreach my $infile (@files)
     my $outfile = $infile;
     $outfile =~ s/^$inputdir/$outputdir/o;
 	
-	system("java -Xmx1000M -Xms1000M -cp C:\\Saxonica9.6\\saxon9pe.jar net.sf.saxon.Transform -t -o:\"$outfile\" -s:\"$infile\" -xsl:hslc-mods-updates-map-to-collections.xsl");
+	system("java -Xmx1000M -Xms1000M -cp C:\\Saxonica9.6\\saxon9pe.jar net.sf.saxon.Transform -t -o:\"$outfile\" -s:\"$infile\" -xsl:hslc-collection-split-metadata-insert.xsl");
 
 }
 
