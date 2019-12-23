@@ -32,8 +32,9 @@
         
         <!-- updates -->
         <!-- on book and newspaper cModel objects that have a value for the date, concatenate it to the value of the title -->
-        <xsl:template match="mods:mods/mods:titleInfo/mods:title[ancestor::mods:mods/mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier[matches(.,'(bookCModel|newspaperIssueCModel)')]][ancestor::mods:mods/mods:originInfo/mods:dateIssued[normalize-space()]]" exclude-result-prefixes="#all">
+        <xsl:template match="mods:mods[mods:relatedItem[@otherType = 'islandoraCModel']/mods:identifier[matches(.,'(bookCModel|newspaperIssueCModel|compound)')]][mods:originInfo/mods:dateIssued[normalize-space()]]/mods:titleInfo[not(@*)]/mods:title" exclude-result-prefixes="#all">
             <xsl:variable name="date" select="ancestor::mods:mods/mods:originInfo/mods:dateIssued[1]"/>
+            <xsl:message select="normalize-space(concat(.,' ',$date))"/>
             <title xmlns="http://www.loc.gov/mods/v3">
                 <xsl:value-of select="normalize-space(concat(.,' ',$date))"/>
             </title>
